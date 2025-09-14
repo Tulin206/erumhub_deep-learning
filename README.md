@@ -81,32 +81,28 @@ TensorFlow Project Structure:
 
 2. Hidden Layer Analysis/
    - Scripts: 
-     - `hidden_layers_&_hidden_neurons.py` and `Hidden Layers And Hidden Neurons.ipynb` - Air quality prediction
      - `simple_keras_tuner_mnist.py` and `simple_keras_tuner_mnist.ipynb` - MNIST digit classification
-   - Datasets: 
-     - `Real_Combine.csv` (included in folder) - For air quality prediction
+   - Datasets:
      - MNIST dataset (automatically downloaded) - For digit classification
-   - Purpose: Experiments with different neural network architectures for both air quality prediction and image classification
-   - Focus: 
-     - Analysis of optimal number of hidden layers and neurons using Keras Tuner
-     - Comparative study between different types of data (numerical vs image)
-   - Documentation: Includes detailed README.md explaining the analysis process
+     - Purpose: Experiments with different neural network architectures for image classification
+     - Focus: 
+       - Analysis of optimal number of hidden layers and neurons using Keras Tuner
+     - Documentation: Includes detailed README.md explaining the analysis process
 
 3. Hyperparameter Tuning/
    - Scripts: `Hyperparameter.py` and `Hyperparameter.ipynb`
-   - Dataset: `Real_Combine.csv` (included in folder)
-   - Purpose: Predicts air quality metrics using optimized neural networks
+   - Dataset: `Churn_Modelling.csv` (included in folder)
+   - Purpose: Demonstrates systematic approach to finding optimal neural network configurations using Keras Tuner
    - Features: Hyperparameter tuning using Keras Tuner
-   - Additional: Contains `project/Air Quality Index/` with tuning results and configurations
    - Documentation: Includes detailed README.md explaining the tuning process
 
 Data Files:
 - `Churn_Modelling.csv` - Banking customer data for churn prediction
-  - Used by: ANN and Hidden Layers experiments
+  - Used by: ANN and Hyperparameter tuning experiments
   - Features: Customer demographics, banking behavior
-- `Real_Combine.csv` - Air quality measurement data
-  - Used by: Hyperparameter tuning experiments
-  - Features: Various air quality metrics and environmental factors
+- `MNIST` - Handwritten digit dataset
+  - Used by: Hidden Layer Analysis experiments
+  - Features: 70,000 grayscale images of handwritten digits (28x28 pixels), split into 60,000 training and 10,000 test samples
 
 ### Running Python Files Locally
 
@@ -159,7 +155,7 @@ If you prefer using Google Colab, you can use the provided .ipynb files which ar
 #### TensorFlow Notebooks:
 Each implementation has both a Python script (.py) and a corresponding Jupyter notebook (.ipynb), with their own README files:
 - `ANN Implementation/ann.ipynb` - Interactive notebook for customer churn prediction using ANN
-- `Hidden Layer Analysis/Hidden Layers And Hidden Neurons.ipynb` - Analysis of neural network architectures
+- `Hidden Layer Analysis/simple_keras_tuner_mnist.ipynb` - Analysis of neural network architectures
 - `Hyperparameter Tuning/Hyperparameter.ipynb` - Interactive notebook for hyperparameter tuning experiments
 
 ### Using Notebooks in Google Colab
