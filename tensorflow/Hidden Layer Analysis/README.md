@@ -1,19 +1,11 @@
 # Hidden Layers and Neurons Analysis using Keras Tuner
 
 This implementation demonstrates how to use Keras Tuner to automatically find the optimal number of hidden layers and neurons for neural networks. The code includes two different implementations:
-1. Air Quality Prediction (Real_Combine.csv)
-2. MNIST Digit Classification
+MNIST Digit Classification
 
 ## Implementations Overview
 
-### 1. Air Quality Prediction
-
-The notebook uses Keras Tuner's RandomSearch functionality to experiment with different neural network architectures by varying:
-1. Number of hidden layers
-2. Number of neurons in each layer
-3. Learning rate
-
-### 2. MNIST Digit Classification
+### MNIST Digit Classification
 
 The notebook uses Keras Tuner's RandomSearch functionality to find optimal architecture for MNIST digit classification by varying:
 1. Number of hidden layers (1-3)
@@ -22,12 +14,7 @@ The notebook uses Keras Tuner's RandomSearch functionality to find optimal archi
 4. Learning rate (1e-4 to 1e-2)
 
 ## Datasets
-
-1. **Real_Combine.csv**
-
-The dataset contains various air quality metrics and environmental factors. The model aims to predict air quality based on these features.
-
-2. **MNIST Dataset**
+**MNIST Dataset**
    - 70,000 grayscale images of handwritten digits (0-9)
    - Each image is 28x28 pixels
    - Split into 60,000 training and 10,000 test images
@@ -53,13 +40,6 @@ from sklearn.preprocessing import StandardScaler
 
 ### 2. Data Preparation
 
-#### Air Quality Data
-- Load the dataset using pandas
-- Split features into:
-  - X (independent features): All columns except the last
-  - y (dependent feature): Last column (air quality metric)
-- Split data into training (70%) and testing (30%) sets
-
 #### MNIST Data
 - Load MNIST dataset using keras.datasets
 - Preprocess images:
@@ -70,34 +50,10 @@ from sklearn.preprocessing import StandardScaler
 
 ### 3. Model Architecture Search Space
 
-#### Air Quality Model
+#### MNIST Model
 
 The `build_model` function defines the search space for the neural network architecture:
 
-```python
-def build_model(hp):
-    model = keras.Sequential()
-    # Number of layers: 2 to 20
-    for i in range(hp.Int('num_layers', 2, 20)):
-        # Number of neurons: 32 to 512 (step of 32)
-        model.add(layers.Dense(
-            units=hp.Int('units_' + str(i),
-                        min_value=32,
-                        max_value=512,
-                        step=32),
-            activation='relu'))
-    model.add(layers.Dense(1, activation='linear'))
-    
-    # Learning rate options: 0.01, 0.001, or 0.0001
-    model.compile(
-        optimizer=keras.optimizers.Adam(
-            hp.Choice('learning_rate', [1e-2, 1e-3, 1e-4])),
-        loss='mean_absolute_error',
-        metrics=['mean_absolute_error'])
-    return model
-```
-
-#### MNIST Model
 ```python
 def build_model(hp):
     model = keras.Sequential()
@@ -130,14 +86,6 @@ def build_model(hp):
 
 ### 4. Training Configuration
 
-#### Air Quality Model
-
-The RandomSearch tuner is configured with:
-- Maximum 5 trials
-- 3 executions per trial
-- Optimization objective: validation mean absolute error
-- Results stored in 'project/Air Quality Index' directory
-
 #### MNIST Model
 - Maximum 5 trials
 - Early stopping with 5 epochs patience
@@ -162,7 +110,7 @@ The RandomSearch tuner is configured with:
    - Options: 0.01, 0.001, 0.0001 (air quality) or 1e-4 to 1e-2 (MNIST)
    - Uses Adam optimizer
 
-4. **Dropout Rate (MNIST only)**
+4. **Dropout Rate**
    - Range: 0 to 0.5
    - Helps prevent overfitting
 
@@ -171,12 +119,10 @@ The RandomSearch tuner is configured with:
 1. **Setup Requirements**
    ```bash
    cd "Hidden Layer Analysis"
-   pip install -r requirements.txt  # For air quality prediction
-   pip install -r simple_requirements.txt  # For MNIST implementation
+   pip install -r requirements.txt
    ```
 
 2. **Run the Notebooks**
-   - `Hidden Layers And Hidden Neurons.ipynb` for air quality prediction
    - `simple_keras_tuner_mnist.ipynb` for MNIST classification
 
 ## Results Analysis

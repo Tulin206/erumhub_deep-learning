@@ -43,20 +43,6 @@ def create_model(layers_list, activation, n_features):
     return model
 ```
 
-### 2. Air Quality Prediction (Planned Implementation)
-
-## Project Structure
-
-```
-Hyperparameter Tuning/
-├── Hyperparameter.ipynb        # Main notebook (Churn prediction)
-├── Hyperparameter.py          # Python script version
-├── Churn_Modelling.csv       # Customer churn dataset
-├── README.md                 # This documentation
-└── project/                  # Results directory
-    └── Air Quality Index/    # Future implementation
-```
-
 ## Implementation Details
 
 ### 1. Data Processing
