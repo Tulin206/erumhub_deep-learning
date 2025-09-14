@@ -70,12 +70,7 @@ The notebook provides:
 
 ## Usage Instructions
 
-1. **Environment Setup**
-   ```bash
-   pip install tensorflow scikit-learn pandas numpy matplotlib seaborn
-   ```
-
-2. **Running the Notebook**
+**Running the Notebook**
    - Open `Hyperparameter.ipynb` in Jupyter or Google Colab
    - Ensure `Churn_Modelling.csv` is in the working directory
    - Execute cells sequentially

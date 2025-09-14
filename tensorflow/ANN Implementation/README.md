@@ -83,13 +83,7 @@ The model's performance is evaluated using:
 
 ## Usage
 
-1. **Setup Requirements**
-   ```bash
-   cd "ANN Implementation"
-   pip install tensorflow pandas numpy matplotlib seaborn scikit-learn
-   ```
-
-2. **Run the Notebook**
+**Run the Notebook**
    - Open `ann.ipynb` in Jupyter Notebook or Google Colab
    - Ensure `Churn_Modelling.csv` is in the same directory
    - Run all cells sequentially

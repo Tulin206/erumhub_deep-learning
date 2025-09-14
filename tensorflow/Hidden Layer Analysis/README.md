@@ -114,17 +114,6 @@ def build_model(hp):
    - Range: 0 to 0.5
    - Helps prevent overfitting
 
-## Usage
-
-1. **Setup Requirements**
-   ```bash
-   cd "Hidden Layer Analysis"
-   pip install -r requirements.txt
-   ```
-
-2. **Run the Notebooks**
-   - `simple_keras_tuner_mnist.ipynb` for MNIST classification
-
 ## Results Analysis
 
 The tuner provides:

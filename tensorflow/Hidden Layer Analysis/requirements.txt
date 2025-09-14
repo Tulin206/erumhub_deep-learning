@@ -1,5 +1,0 @@
-tensorflow
-keras-tuner
-numpy
-pandas
-scikit-learn
