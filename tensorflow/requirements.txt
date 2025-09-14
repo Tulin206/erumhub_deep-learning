@@ -7,4 +7,7 @@ scikit-learn>=1.2.0
 seaborn>=0.12.0
 keras-tuner>=1.3.0
 ipywidgets>=8.0.0
-
+scikeras>=0.12.0  # Required for KerasClassifier in Hyperparameter.ipynb
+tensorboard>=2.13.0  # For visualization of training metrics
+h5py>=3.8.0  # For model saving/loading
+tqdm>=4.65.0  # For progress bars

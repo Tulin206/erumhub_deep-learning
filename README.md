@@ -42,17 +42,13 @@ For local development, you should use the .py files provided in each directory. 
    ```
 
 Available Python Files for Local Development:
-- perceptron/code/:
-  - `perceptron_pytorch.py` - PyTorch implementation of perceptron
-- optimization/code/:
-  - `adam.py` - Adam optimizer implementation
-  - `scheduler.py` - Learning rate scheduler implementation
-  - `sgd_scheduler_momentum.py` - SGD with momentum implementation
-  - Helper modules:
-    - `helper_dataset.py`
-    - `helper_evaluation.py`
-    - `helper_plotting.py`
-    - `helper_train.py`
+- `simple_deep_learning.py` - A comprehensive implementation of deep learning fundamentals including:
+  - Neural network architecture
+  - Forward and backward propagation
+  - Training and validation process
+  - Loss computation and optimization
+  - Performance visualization
+  - Uses MNIST dataset (automatically downloaded to data/MNIST)
 
 ### Setting up TensorFlow Environment
 
@@ -74,12 +70,43 @@ Available Python Files for Local Development:
    uv pip install -r requirements.txt
    ```
 
-Available Python Files for Local Development:
-- `ann.py` - Artificial Neural Network implementation
-- `hidden_layers_&_hidden_neurons.py` - Hidden layers experiments
-- `Hyperparameter.py` - Hyperparameter tuning implementation
-- `image_classification.py` - Image classification using SVM
-- `main.py` - Main project file
+TensorFlow Project Structure:
+
+1. ANN Implementation/
+   - Scripts: `ann.py` and `ann.ipynb`
+   - Dataset: `Churn_Modelling.csv` (included in folder)
+   - Purpose: Predicts if a bank customer will leave the bank (churn) based on various features
+   - Features: Credit score, geography, gender, account balance, etc.
+   - Documentation: Includes detailed README.md explaining the implementation
+
+2. Hidden Layer Analysis/
+   - Scripts: 
+     - `hidden_layers_&_hidden_neurons.py` and `Hidden Layers And Hidden Neurons.ipynb` - Air quality prediction
+     - `simple_keras_tuner_mnist.py` and `simple_keras_tuner_mnist.ipynb` - MNIST digit classification
+   - Datasets: 
+     - `Real_Combine.csv` (included in folder) - For air quality prediction
+     - MNIST dataset (automatically downloaded) - For digit classification
+   - Purpose: Experiments with different neural network architectures for both air quality prediction and image classification
+   - Focus: 
+     - Analysis of optimal number of hidden layers and neurons using Keras Tuner
+     - Comparative study between different types of data (numerical vs image)
+   - Documentation: Includes detailed README.md explaining the analysis process
+
+3. Hyperparameter Tuning/
+   - Scripts: `Hyperparameter.py` and `Hyperparameter.ipynb`
+   - Dataset: `Real_Combine.csv` (included in folder)
+   - Purpose: Predicts air quality metrics using optimized neural networks
+   - Features: Hyperparameter tuning using Keras Tuner
+   - Additional: Contains `project/Air Quality Index/` with tuning results and configurations
+   - Documentation: Includes detailed README.md explaining the tuning process
+
+Data Files:
+- `Churn_Modelling.csv` - Banking customer data for churn prediction
+  - Used by: ANN and Hidden Layers experiments
+  - Features: Customer demographics, banking behavior
+- `Real_Combine.csv` - Air quality measurement data
+  - Used by: Hyperparameter tuning experiments
+  - Features: Various air quality metrics and environmental factors
 
 ### Running Python Files Locally
 
@@ -108,7 +135,7 @@ If you prefer using Google Colab, you can use the provided .ipynb files which ar
    - After authorization, your Google Drive will be mounted and accessible
 
 2. **Set Up Python Path:**
-   - First, copy all files from the pytorch folder to your Google Drive's "Colab Notebooks" folder
+   - First, copy the notebook to your Google Drive's "Colab Notebooks" folder
    - Then run the following code to set up the correct paths:
      ```python
      import os, sys
@@ -116,29 +143,24 @@ If you prefer using Google Colab, you can use the provided .ipynb files which ar
      os.chdir(BASE)             # go into the folder
      sys.path.insert(0, BASE)   # add it to Python path
      ```
-   - This setup ensures that all notebooks can access helper modules (helper_dataset.py, helper_evaluation.py, helper_plotting.py, helper_train.py)
-   - Now you can run notebooks like adam.ipynb, sgd-scheduler-momentum.ipynb, and scheduler.ipynb without path issues
 
 3. **Verify Setup:**
    - In the left sidebar, you should see "MyDrive"
    - Under MyDrive, look for the "Colab Notebooks" folder
-   - Make sure all your helper files are visible in this folder
+   - Make sure your notebook is visible in this folder
 
 ### Available Notebooks
 
 #### PyTorch Notebooks:
-- `DNN4HEP_combined_exercise.ipynb`
-- perceptron/code/:
-  - `perceptron-pytorch.ipynb`
-- optimization/code/:
-  - `adam.ipynb`
-  - `scheduler.ipynb`
-  - `sgd-scheduler-momentum.ipynb`
+- `simple_deep_learning.ipynb` - Interactive notebook version of the deep learning implementation
+  - Uses MNIST dataset (automatically downloaded)
+  - Includes step-by-step explanations of each concept
 
 #### TensorFlow Notebooks:
-- `Hidden Layers And Hidden Neurons.ipynb`
-- `Image Classification Using SVM.ipynb`
-- `main.ipynb`
+Each implementation has both a Python script (.py) and a corresponding Jupyter notebook (.ipynb), with their own README files:
+- `ANN Implementation/ann.ipynb` - Interactive notebook for customer churn prediction using ANN
+- `Hidden Layer Analysis/Hidden Layers And Hidden Neurons.ipynb` - Analysis of neural network architectures
+- `Hyperparameter Tuning/Hyperparameter.ipynb` - Interactive notebook for hyperparameter tuning experiments
 
 ### Using Notebooks in Google Colab
 
@@ -162,6 +184,99 @@ If you prefer using Google Colab, you can use the provided .ipynb files which ar
 4. **Save Your Work:**
    - Save a copy to your Google Drive: `File` > `Save a copy in Drive`
    - Download locally: `File` > `Download` > `Download .ipynb`
+
+## Google Colab Hardware Acceleration
+
+Google Colab provides different hardware accelerators to speed up model training:
+
+### Types of Hardware Accelerators
+
+1. **CPU (Central Processing Unit)**
+   - Default option
+   - Suitable for basic computations and small models
+   - Slowest among the three options
+   - Use when:
+     - Running basic data preprocessing
+     - Training very small models
+     - Testing code functionality
+
+2. **GPU (Graphics Processing Unit)**
+   - Significantly faster than CPU for deep learning
+   - Ideal for most deep learning tasks
+   - NVIDIA GPUs (Tesla T4, P100, or V100)
+   - Use when:
+     - Training neural networks
+     - Processing image/video data
+     - Running parallel computations
+   - Free tier limitations apply
+
+3. **TPU (Tensor Processing Unit)**
+   - Google's custom-designed AI accelerator
+   - Fastest option for specific models
+   - Best for TensorFlow models
+   - Use when:
+     - Training large TensorFlow models
+     - Need maximum performance
+     - Working with distributed training
+   - May require code modifications
+
+### How to Enable Hardware Acceleration in Colab
+
+1. Click on "Runtime" in the top menu
+2. Select "Change runtime type"
+3. Choose your hardware accelerator:
+   - None (CPU)
+   - GPU
+   - TPU
+4. Click "Save"
+
+### Verifying GPU/TPU Connection
+
+For GPU:
+```python
+import tensorflow as tf
+print("GPU Available: ", tf.config.list_physical_devices('GPU'))
+
+# Or for PyTorch
+import torch
+print("GPU Available: ", torch.cuda.is_available())
+print("GPU Device Name: ", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "CPU")
+```
+
+For TPU:
+```python
+import tensorflow as tf
+try:
+    tpu = tf.distribute.cluster_resolver.TPUClusterResolver()
+    print('Running on TPU ', tpu.cluster_spec().as_dict()['worker'])
+except ValueError:
+    print("No TPU detected")
+```
+
+### Best Practices
+
+1. **Resource Management**:
+   - Free tier has usage limits
+   - Sessions disconnect after 12 hours
+   - Save your work frequently
+   - Use `runtime.reset()` to clear memory
+
+2. **Choosing Accelerator**:
+   - CPU: Data preprocessing, small models
+   - GPU: Most deep learning tasks, PyTorch models
+   - TPU: Large TensorFlow models, distributed training
+
+3. **Memory Usage**:
+   - Monitor memory usage (RAM)
+   - Clear output cells when not needed
+   - Restart runtime if memory issues occur
+   - Use appropriate batch sizes
+
+4. **Performance Tips**:
+   - Keep data on Google Drive for faster access
+   - Use efficient data loading methods
+   - Enable mixed precision training when possible
+   - Monitor training with tensorboard
 
 ## Note
 - The notebooks are self-contained and include all necessary package installations
