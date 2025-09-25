@@ -1,120 +1,14 @@
 # Deep Learning Project Setup and Usage Guide
 
-This repository contains PyTorch and TensorFlow implementations of various deep learning models and exercises. The project provides two ways to work with the code:
-- Python (.py) files for local development
-- Jupyter Notebooks (.ipynb) for Google Colab usage
+This repository contains PyTorch and TensorFlow implementations of various deep learning models and exercises.
 
-## Important Note About GPU Support
+---
 
-By default, the requirements files install CPU versions of PyTorch and TensorFlow. This ensures compatibility across all systems. The code will run on both CPU and GPU environments. If you want to use GPU acceleration:
+## Google Colab Usage (Recommended for Limited Local Hardware)
 
-- For PyTorch: Visit [PyTorch Installation](https://pytorch.org/get-started/locally/) to install the GPU version
-- For TensorFlow: Visit [TensorFlow Installation](https://www.tensorflow.org/install/pip) to install the GPU version
+> **Note:** If you are comfortable using your local machine and are familiar with Python environment managers such as `uv`, `conda`, or `virtualenv`, you can skip the Google Colab instructions below and follow the local setup instructions provided later in this README.
 
-## Environment Setup
-
-This project uses [uv](https://github.com/astral-sh/uv?tab=readme-ov-file#python-versions) for fast Python environment management and dependency installation.
-
-Follow the installation instructions for `uv` at the link above.
-
-## Local Development with Python Files
-
-For local development, you should use the .py files provided in each directory. The .ipynb files are specifically prepared for Google Colab usage.
-
-### Setting up PyTorch Environment
-
-1. Navigate to the PyTorch directory:
-   ```bash
-   cd pytorch
-   ```
-
-2. Create and activate a virtual environment:
-   ```bash
-   uv venv .venv
-   source .venv/bin/activate  # On Unix/macOS
-   # Or on Windows:
-   # .venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   uv pip install -r requirements.txt
-   ```
-
-Available Python Files for Local Development:
-- `simple_deep_learning.py` - A comprehensive implementation of deep learning fundamentals including:
-  - Neural network architecture
-  - Forward and backward propagation
-  - Training and validation process
-  - Loss computation and optimization
-  - Performance visualization
-  - Uses MNIST dataset (automatically downloaded to data/MNIST)
-
-### Setting up TensorFlow Environment
-
-1. Navigate to the TensorFlow directory:
-   ```bash
-   cd tensorflow
-   ```
-
-2. Create and activate a virtual environment:
-   ```bash
-   uv venv .venv
-   source .venv/bin/activate  # On Unix/macOS
-   # Or on Windows:
-   # .venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   uv pip install -r requirements.txt
-   ```
-
-TensorFlow Project Structure:
-
-1. ANN Implementation/
-   - Scripts: `ann.py` and `ann.ipynb`
-   - Dataset: `Churn_Modelling.csv` (included in folder)
-   - Purpose: Predicts if a bank customer will leave the bank (churn) based on various features
-   - Features: Credit score, geography, gender, account balance, etc.
-   - Documentation: Includes detailed README.md explaining the implementation
-
-2. Hidden Layer Analysis/
-   - Scripts: 
-     - `simple_keras_tuner_mnist.py` and `simple_keras_tuner_mnist.ipynb` - MNIST digit classification
-   - Datasets:
-     - MNIST dataset (automatically downloaded) - For digit classification
-     - Purpose: Experiments with different neural network architectures for image classification
-     - Focus: 
-       - Analysis of optimal number of hidden layers and neurons using Keras Tuner
-     - Documentation: Includes detailed README.md explaining the analysis process
-
-3. Hyperparameter Tuning/
-   - Scripts: `Hyperparameter.py` and `Hyperparameter.ipynb`
-   - Dataset: `Churn_Modelling.csv` (included in folder)
-   - Purpose: Demonstrates systematic approach to finding optimal neural network configurations using Keras Tuner
-   - Features: Hyperparameter tuning using Keras Tuner
-   - Documentation: Includes detailed README.md explaining the tuning process
-
-Data Files:
-- `Churn_Modelling.csv` - Banking customer data for churn prediction
-  - Used by: ANN and Hyperparameter tuning experiments
-  - Features: Customer demographics, banking behavior
-- `MNIST` - Handwritten digit dataset
-  - Used by: Hidden Layer Analysis experiments
-  - Features: 70,000 grayscale images of handwritten digits (28x28 pixels), split into 60,000 training and 10,000 test samples
-
-### Running Python Files Locally
-
-After setting up your environment:
-
-1. Activate the appropriate virtual environment (PyTorch or TensorFlow)
-2. Run the desired Python file:
-   ```bash
-   python file_name.py
-   ```
-
-## Google Colab Usage with Jupyter Notebooks
+**If your local machine does not have sufficient hardware (CPU/GPU/TPU) for deep learning, we recommend using Google Colab. Colab provides free access to powerful hardware accelerators and requires no local setup.**
 
 If you prefer using Google Colab, you can use the provided .ipynb files which are specifically formatted for the Colab environment.
 
@@ -278,3 +172,115 @@ except ValueError:
 - The notebooks are self-contained and include all necessary package installations
 - Some notebooks may require additional data files - check the notebook contents for specific requirements
 - Make sure to select GPU runtime in Colab for notebooks involving deep learning models
+
+---
+
+## Local Development with Python Files
+
+If you prefer to run the code locally and have the necessary hardware, follow these steps to set up your environment.
+
+## Important Note About GPU Support
+
+By default, the requirements files install CPU versions of PyTorch and TensorFlow. This ensures compatibility across all systems. The code will run on both CPU and GPU environments. If you want to use GPU acceleration:
+
+- For PyTorch: Visit [PyTorch Installation](https://pytorch.org/get-started/locally/) to install the GPU version
+- For TensorFlow: Visit [TensorFlow Installation](https://www.tensorflow.org/install/pip) to install the GPU version
+
+## Environment Setup
+
+This project uses [uv](https://github.com/astral-sh/uv?tab=readme-ov-file#python-versions) for fast Python environment management and dependency installation.
+
+Follow the installation instructions for `uv` at the link above.
+
+### Setting up PyTorch Environment
+
+1. Navigate to the PyTorch directory:
+   ```bash
+   cd pytorch
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   uv venv .venv
+   source .venv/bin/activate  # On Unix/macOS
+   # Or on Windows:
+   # .venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   uv pip install -r requirements.txt
+   ```
+
+Available Python Files for Local Development:
+- `simple_deep_learning.py` - A comprehensive implementation of deep learning fundamentals including:
+  - Neural network architecture
+  - Forward and backward propagation
+  - Training and validation process
+  - Loss computation and optimization
+  - Performance visualization
+  - Uses MNIST dataset (automatically downloaded to data/MNIST)
+
+### Setting up TensorFlow Environment
+
+1. Navigate to the TensorFlow directory:
+   ```bash
+   cd tensorflow
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   uv venv .venv
+   source .venv/bin/activate  # On Unix/macOS
+   # Or on Windows:
+   # .venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   uv pip install -r requirements.txt
+   ```
+
+TensorFlow Project Structure:
+
+1. ANN Implementation/
+   - Scripts: `ann.py` and `ann.ipynb`
+   - Dataset: `Churn_Modelling.csv` (included in folder)
+   - Purpose: Predicts if a bank customer will leave the bank (churn) based on various features
+   - Features: Credit score, geography, gender, account balance, etc.
+   - Documentation: Includes detailed README.md explaining the implementation
+
+2. Hidden Layer Analysis/
+   - Scripts: 
+     - `simple_keras_tuner_mnist.py` and `simple_keras_tuner_mnist.ipynb` - MNIST digit classification
+   - Datasets:
+     - MNIST dataset (automatically downloaded) - For digit classification
+     - Purpose: Experiments with different neural network architectures for image classification
+     - Focus: 
+       - Analysis of optimal number of hidden layers and neurons using Keras Tuner
+     - Documentation: Includes detailed README.md explaining the analysis process
+
+3. Hyperparameter Tuning/
+   - Scripts: `Hyperparameter.py` and `Hyperparameter.ipynb`
+   - Dataset: `Churn_Modelling.csv` (included in folder)
+   - Purpose: Demonstrates systematic approach to finding optimal neural network configurations using Keras Tuner
+   - Features: Hyperparameter tuning using Keras Tuner
+   - Documentation: Includes detailed README.md explaining the tuning process
+
+Data Files:
+- `Churn_Modelling.csv` - Banking customer data for churn prediction
+  - Used by: ANN and Hyperparameter tuning experiments
+  - Features: Customer demographics, banking behavior
+- `MNIST` - Handwritten digit dataset
+  - Used by: Hidden Layer Analysis experiments
+  - Features: 70,000 grayscale images of handwritten digits (28x28 pixels), split into 60,000 training and 10,000 test samples
+
+### Running Python Files Locally
+
+After setting up your environment:
+
+1. Activate the appropriate virtual environment (PyTorch or TensorFlow)
+2. Run the desired Python file:
+   ```bash
+   python file_name.py
+   ```
